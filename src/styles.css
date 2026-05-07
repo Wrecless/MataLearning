@@ -337,48 +337,6 @@ button {
   gap: 18px;
 }
 
-.hub-topbar {
-  display: flex;
-  min-height: 58px;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0 18px;
-  background: rgba(5, 16, 12, 0.7);
-  backdrop-filter: blur(14px);
-}
-
-.hub-topbar strong {
-  display: block;
-  margin-top: 4px;
-  color: var(--ink);
-  font-size: 0.98rem;
-}
-
-.live-indicator {
-  position: relative;
-  border: 1px solid rgba(50, 245, 132, 0.34);
-  border-radius: 999px;
-  padding: 8px 12px 8px 28px;
-  color: var(--mint);
-  font-size: 0.82rem;
-  font-weight: 900;
-}
-
-.live-indicator::before {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  content: "";
-  background: var(--green);
-  box-shadow: 0 0 16px var(--green);
-  transform: translateY(-50%);
-}
-
 h1,
 h2,
 h3,
@@ -1193,7 +1151,6 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .hub-topbar,
   .page-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -1261,10 +1218,6 @@ p {
 }
 
 @media (max-width: 460px) {
-  .hub-topbar {
-    padding: 14px;
-  }
-
   .decision-panel {
     grid-template-columns: 1fr;
   }

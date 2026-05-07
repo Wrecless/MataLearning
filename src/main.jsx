@@ -685,14 +685,6 @@ function App() {
       <div className="matrix-rain" aria-hidden="true" />
       <GameSidebar activeView={activeView} setActiveView={setActiveView} />
       <div className="content-shell">
-        <header className="hub-topbar">
-          <div>
-            <span className="console-label">status://online</span>
-            <strong>Learning games workspace</strong>
-          </div>
-          <span className="live-indicator">Ready for class</span>
-        </header>
-
         {activeView === 'home' && <HomePage onLaunch={setActiveView} />}
         {activeView === 'bubble' && <BubbleSortGame />}
         {activeView === 'binary' && <BinaryBuilderGame />}

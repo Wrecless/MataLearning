@@ -11,7 +11,10 @@ Games are organised by topic in the sidebar.
 ### Algorithms
 
 - **Bubble Sort Lab**: practise bubble sort by manually comparing adjacent values and choosing whether to swap.
-- **Search Sprint**: coming soon.
+- **Search Sprint**: practise linear search and binary search by choosing the next item to inspect.
+- **Selection Sort Showdown**: practise selection sort by finding the smallest unsorted value each pass.
+- **Insertion Sort Cards**: practise insertion sort by placing each new value into a sorted hand.
+- **Pathfinding Grid**: practise breadth-first search by expanding grid cells in queue order.
 
 ### Data Representation
 

@@ -4,7 +4,11 @@ import BubbleSortGame from './components/BubbleSortGame.jsx';
 import DividendBuilderGame from './components/DividendBuilderGame.jsx';
 import GameSidebar from './components/GameSidebar.jsx';
 import HomePage from './components/HomePage.jsx';
+import InsertionSortGame from './components/InsertionSortGame.jsx';
 import ModuloMasteryGame from './components/ModuloMasteryGame.jsx';
+import PathfindingGridGame from './components/PathfindingGridGame.jsx';
+import SearchSprintGame from './components/SearchSprintGame.jsx';
+import SelectionSortGame from './components/SelectionSortGame.jsx';
 import { games } from './data/games.js';
 
 export default function App() {
@@ -20,6 +24,10 @@ export default function App() {
           <HomePage onLaunch={setActiveView} readyGameCount={readyGameCount} />
         )}
         {activeView === 'bubble' && <BubbleSortGame />}
+        {activeView === 'search' && <SearchSprintGame />}
+        {activeView === 'selection' && <SelectionSortGame />}
+        {activeView === 'insertion' && <InsertionSortGame />}
+        {activeView === 'pathfinding' && <PathfindingGridGame />}
         {activeView === 'binary' && <BinaryBuilderGame />}
         {activeView === 'modulo' && <ModuloMasteryGame />}
         {activeView === 'dividend' && <DividendBuilderGame />}

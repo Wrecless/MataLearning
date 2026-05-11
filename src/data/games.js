@@ -1,4 +1,4 @@
-import { Binary, Braces, Code2, Divide, Percent, Terminal } from 'lucide-react';
+import { Binary, Braces, Code2, Divide, ListOrdered, Percent, Route, Search, Shuffle } from 'lucide-react';
 
 export const games = [
   {
@@ -26,8 +26,29 @@ export const games = [
     id: 'search',
     title: 'Search Sprint',
     description: 'Linear and binary search',
-    status: 'Soon',
-    icon: Terminal,
+    status: 'Ready',
+    icon: Search,
+  },
+  {
+    id: 'selection',
+    title: 'Selection Sort Showdown',
+    description: 'Find the smallest value',
+    status: 'Ready',
+    icon: ListOrdered,
+  },
+  {
+    id: 'insertion',
+    title: 'Insertion Sort Cards',
+    description: 'Insert into sorted order',
+    status: 'Ready',
+    icon: Shuffle,
+  },
+  {
+    id: 'pathfinding',
+    title: 'Pathfinding Grid',
+    description: 'Breadth-first search',
+    status: 'Ready',
+    icon: Route,
   },
   {
     id: 'modulo',
@@ -50,7 +71,9 @@ export const gameCategories = [
     id: 'algorithms',
     title: 'Algorithms',
     description: 'Sorting and searching',
-    games: games.filter((game) => ['bubble', 'search'].includes(game.id)),
+    games: games.filter((game) =>
+      ['bubble', 'search', 'selection', 'insertion', 'pathfinding'].includes(game.id),
+    ),
   },
   {
     id: 'data-representation',

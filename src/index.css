@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+@layer base {
+  body {
+    min-width: 320px;
+    margin: 0;
+    color: #f1fff6;
+    background:
+      radial-gradient(circle at top left, rgba(50, 245, 132, 0.18), transparent 34rem),
+      linear-gradient(135deg, #020403 0%, #06130d 48%, #020806 100%);
+  }
+
+  button {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .matrix-rain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    background-image:
+      linear-gradient(180deg, rgba(50, 245, 132, 0), rgba(50, 245, 132, 0.4), rgba(50, 245, 132, 0)),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 34px,
+        rgba(50, 245, 132, 0.2) 34px 35px,
+        transparent 35px 86px
+      );
+    filter: blur(0.2px);
+    mask-image: radial-gradient(circle at 72% 14%, black, transparent 56%);
+  }
+
+  .matrix-rain::after {
+    position: absolute;
+    inset: 0;
+    content: "0101 1010 0011 0110 1100 1001 0010 1110";
+    color: rgba(107, 255, 169, 0.12);
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    line-height: 2.15;
+    word-spacing: 24px;
+    transform: rotate(90deg) scale(1.7);
+    transform-origin: center;
+  }
+
+  .panel {
+    @apply rounded-[10px] border border-[#93ffc2]/20 bg-[#05100c]/85 shadow-[0_24px_70px_rgba(0,0,0,0.42)];
+  }
+
+  .console-label {
+    @apply font-mono text-xs font-extrabold uppercase text-[#32f584];
+  }
+
+  .ui-label {
+    @apply mb-1.5 block text-xs font-black uppercase text-[#a6c6b3];
+  }
+
+  .nav-item {
+    @apply flex min-h-11 w-full items-center gap-2.5 rounded-lg border border-transparent px-3 text-left text-base font-extrabold text-[#a6c6b3] transition hover:border-[#93ffc2]/35 hover:bg-[#32f584]/10 hover:text-[#f1fff6];
+  }
+
+  .nav-item.active {
+    @apply border-[#93ffc2]/35 bg-[#32f584]/10 text-[#f1fff6];
+  }
+
+  .category-toggle {
+    @apply flex min-h-14 w-full items-center justify-between gap-3 rounded-lg border border-transparent bg-[#effff6]/5 px-3 py-2 text-left transition hover:border-[#93ffc2]/35 hover:bg-[#32f584]/10;
+  }
+
+  .category-toggle strong {
+    @apply text-sm font-black text-[#f1fff6];
+  }
+
+  .category-toggle small {
+    @apply text-xs font-bold text-[#6c8b78];
+  }
+
+  .game-nav-item {
+    @apply flex min-h-18 w-full items-center gap-2.5 rounded-lg border border-transparent p-2.5 text-left text-[#a6c6b3] transition hover:border-[#93ffc2]/35 hover:bg-[#32f584]/10 hover:text-[#f1fff6] disabled:cursor-not-allowed disabled:opacity-55;
+  }
+
+  .game-nav-item.active {
+    @apply border-[#93ffc2]/35 bg-[#32f584]/10 text-[#f1fff6];
+  }
+
+  .status-chip {
+    @apply ml-auto grid min-h-7 place-items-center rounded-full border border-[#93ffc2]/20 px-2 text-[0.68rem] font-black text-[#32f584];
+  }
+
+  .status-chip.soon {
+    @apply size-7 px-0 text-[#6c8b78];
+  }
+
+  .home-shell {
+    @apply relative grid min-h-[calc(100vh-40px)] gap-8 overflow-hidden rounded-[10px] border border-[#93ffc2]/20 bg-[#05100c]/85 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.42)] xl:grid-cols-[minmax(0,1fr)_430px] xl:p-14;
+    background:
+      linear-gradient(140deg, rgba(13, 44, 31, 0.93), rgba(4, 13, 10, 0.86) 56%),
+      rgba(3, 8, 6, 0.96);
+  }
+
+  .home-shell::after {
+    position: absolute;
+    right: -60px;
+    bottom: -80px;
+    width: 430px;
+    height: 430px;
+    content: "";
+    border: 1px solid rgba(50, 245, 132, 0.16);
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(50, 245, 132, 0.14) 0 2px,
+      transparent 2px 18px
+    );
+    clip-path: polygon(7% 10%, 100% 0, 84% 86%, 0 100%);
+  }
+
+  .home-side-rail {
+    @apply relative z-10 grid gap-10 xl:flex xl:flex-col xl:justify-between;
+  }
+
+  .launch-button {
+    @apply inline-flex min-h-14 items-center justify-center gap-2.5 rounded-lg border border-[#32f584]/60 bg-gradient-to-br from-[#10a95b] to-[#27dba2] px-5 text-base font-black text-[#03120b] shadow-[0_18px_46px_rgba(50,245,132,0.22)] transition hover:-translate-y-0.5;
+  }
+
+  .icon-button {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-[#93ffc2]/20 bg-[#effff6]/5 px-3.5 text-sm font-black text-[#a8ffd0] transition hover:-translate-y-0.5 hover:border-[#93ffc2]/35;
+  }
+
+  .decision-button {
+    @apply inline-flex min-h-16 min-w-43 items-center justify-center gap-2.5 rounded-lg px-6 text-base font-black text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-55 disabled:hover:translate-y-0;
+  }
+
+  .code-preview {
+    @apply relative z-10 rounded-[10px] border border-[#32f584]/25 bg-black/35 p-5 shadow-[inset_0_0_50px_rgba(50,245,132,0.05)];
+  }
+
+  .code-preview pre {
+    @apply m-0 whitespace-pre-wrap font-mono text-base font-bold leading-loose text-[#32f584];
+  }
+
+  .pseudo-code {
+    @apply my-6 grid list-none gap-2.5 p-0;
+    counter-reset: line;
+  }
+
+  .pseudo-code li {
+    @apply relative min-h-10 rounded-lg border border-[#93ffc2]/20 bg-[#effff6]/5 py-2.5 pl-11 pr-3 font-mono text-sm font-bold leading-snug text-[#a6c6b3];
+  }
+
+  .pseudo-code li::before {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    color: #32f584;
+    font-family: var(--font-mono);
+    font-weight: 950;
+    counter-increment: line;
+    content: counter(line);
+  }
+
+  .pseudo-code li.active {
+    @apply border-[#f5c15b]/60 bg-[#f5c15b]/10 text-[#ffe5a8];
+  }
+
+  .pseudo-code li.done {
+    @apply border-[#32f584]/35 bg-[#32f584]/10 text-[#a8ffd0];
+  }
+
+  .outcome {
+    @apply rounded-lg border border-[#93ffc2]/20 bg-[#effff6]/5 p-4;
+  }
+
+  .outcome.complete {
+    @apply border-[#32f584]/35 bg-[#32f584]/10;
+  }
+
+  .outcome strong {
+    @apply mb-2 block text-base font-black text-[#f1fff6];
+  }
+
+  .outcome p {
+    @apply text-sm font-bold leading-relaxed text-[#a6c6b3];
+  }
+
+  .bit-column {
+    @apply grid min-h-32 content-between rounded-lg border border-[#a8ffd0]/20 bg-[#effff6]/5 p-3 text-center text-[#a6c6b3] transition hover:-translate-y-0.5 hover:border-[#32f584]/40 xl:min-h-64;
+    background:
+      linear-gradient(180deg, rgba(239, 255, 246, 0.07), rgba(50, 245, 132, 0.03)),
+      repeating-linear-gradient(180deg, rgba(50, 245, 132, 0.05) 0 1px, transparent 1px 18px);
+  }
+
+  .bit-column.on {
+    @apply border-[#32f584]/75 text-[#a8ffd0] shadow-[0_0_32px_rgba(50,245,132,0.16)];
+    background:
+      linear-gradient(180deg, rgba(50, 245, 132, 0.22), rgba(11, 78, 44, 0.24)),
+      repeating-linear-gradient(180deg, rgba(168, 255, 208, 0.1) 0 1px, transparent 1px 18px);
+  }
+
+  .bit-column strong {
+    @apply font-mono text-6xl font-black leading-none text-current;
+  }
+
+  .bit-column small {
+    @apply text-xs font-black uppercase text-current;
+  }
+}

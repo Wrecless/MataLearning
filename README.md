@@ -17,6 +17,11 @@ Games are organised by topic in the sidebar.
 
 - **Binary Builder**: practise 8-bit binary place values by matching a target decimal number.
 
+### Computational Mathematics
+
+- **Modulo Mastery**: practise modulo by finding the remainder after division.
+- **Dividend Builder**: practise constructing the dividend from divisor, quotient, and remainder.
+
 ### Logic
 
 - **Logic Gates**: coming soon.
@@ -25,8 +30,21 @@ Games are organised by topic in the sidebar.
 
 - React
 - Vite
+- Tailwind CSS
 - Lucide React icons
 - Vercel static deployment
+
+## Source Structure
+
+```text
+src/
+  components/    React UI components and game screens
+  data/          Sidebar game/category metadata
+  utils/         Game logic helpers
+  App.jsx        App shell and routing state
+  index.css      Tailwind entry point and shared component classes
+  main.jsx       React entry point
+```
 
 ## Branding
 

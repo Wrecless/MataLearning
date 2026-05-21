@@ -6,6 +6,7 @@ import GameSidebar from './components/GameSidebar.jsx';
 import HomePage from './components/HomePage.jsx';
 import InsertionSortGame from './components/InsertionSortGame.jsx';
 import ModuloMasteryGame from './components/ModuloMasteryGame.jsx';
+import PacketRoutingRaceGame from './components/PacketRoutingRaceGame.jsx';
 import PathfindingGridGame from './components/PathfindingGridGame.jsx';
 import SearchSprintGame from './components/SearchSprintGame.jsx';
 import SelectionSortGame from './components/SelectionSortGame.jsx';
@@ -31,6 +32,7 @@ export default function App() {
         {activeView === 'binary' && <BinaryBuilderGame />}
         {activeView === 'modulo' && <ModuloMasteryGame />}
         {activeView === 'dividend' && <DividendBuilderGame />}
+        {activeView === 'packet-routing' && <PacketRoutingRaceGame />}
       </div>
     </main>
   );

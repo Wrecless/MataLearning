@@ -64,6 +64,13 @@ export const games = [
     status: 'Ready',
     icon: Divide,
   },
+  {
+    id: 'packet-routing',
+    title: 'Packet Routing Race',
+    description: 'Routers, links, and packets',
+    status: 'Ready',
+    icon: Route,
+  },
 ];
 
 export const gameCategories = [
@@ -92,5 +99,11 @@ export const gameCategories = [
     title: 'Computational Mathematics',
     description: 'Modulo and division',
     games: games.filter((game) => ['modulo', 'dividend'].includes(game.id)),
+  },
+  {
+    id: 'networking',
+    title: 'Networking',
+    description: 'Packets and routing',
+    games: games.filter((game) => ['packet-routing'].includes(game.id)),
   },
 ];

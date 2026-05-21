@@ -25,6 +25,10 @@ Games are organised by topic in the sidebar.
 - **Modulo Mastery**: practise modulo by finding the remainder after division.
 - **Dividend Builder**: practise constructing the dividend from divisor, quotient, and remainder.
 
+### Networking
+
+- **Packet Routing Race**: practise routing packets through three increasingly complex network stages while avoiding broken and congested links, then reassemble delivered packets at the server.
+
 ### Logic
 
 - **Logic Gates**: coming soon.

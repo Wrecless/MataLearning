@@ -1,7 +1,15 @@
 import { ArrowLeftRight, Check, Lightbulb, RefreshCw, RotateCcw, Sparkles, X } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { LIST_SIZE, makeList } from '../utils/bubbleSort.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Pass', definition: 'One full sweep left to right, comparing every neighbouring pair once.' },
+  { term: 'Swap', definition: 'Trading the positions of two adjacent values.' },
+  { term: 'Comparison', definition: 'Checking two values side by side to see which one is bigger.' },
+];
 
 export default function BubbleSortGame() {
   const [seed, setSeed] = useState(() => makeList());
@@ -18,6 +26,12 @@ export default function BubbleSortGame() {
   const shouldSwap = pair[0] > pair[1];
   const totalComparisons = useMemo(() => (LIST_SIZE * (LIST_SIZE - 1)) / 2, []);
   const progress = complete ? 100 : Math.min(100, Math.round((steps / totalComparisons) * 100));
+
+  useEffect(() => {
+    if (complete) {
+      markGameComplete('bubble');
+    }
+  }, [complete]);
 
   function finishAdvance(nextNumbers) {
     setIsAdvancing(false);
@@ -232,6 +246,10 @@ export default function BubbleSortGame() {
                   ? `${pair[0]} is greater than ${pair[1]}, so the larger value should move right.`
                   : `${pair[0]} is already before ${pair[1]}, so bubble sort moves on.`}
             </p>
+          </div>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
           </div>
         </aside>
       </div>

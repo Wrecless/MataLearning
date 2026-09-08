@@ -18,6 +18,23 @@
   button {
     font: inherit;
   }
+
+  :focus-visible {
+    outline: 2px solid #32f584;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer components {
@@ -97,6 +114,38 @@
 
   .status-chip.soon {
     @apply size-7 px-0 text-[#6c8b78];
+  }
+
+  .status-chip.done {
+    @apply size-7 gap-0 border-[#32f584]/60 bg-[#32f584]/20 px-0 text-[#32f584];
+  }
+
+  .glossary-panel {
+    @apply rounded-lg border border-[#93ffc2]/20 bg-[#effff6]/5 p-4;
+  }
+
+  .glossary-panel summary {
+    @apply flex cursor-pointer list-none items-center gap-2 text-xs font-black uppercase tracking-wide text-[#a6c6b3] transition hover:text-[#f1fff6];
+  }
+
+  .glossary-panel summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .glossary-panel[open] summary {
+    @apply mb-3 text-[#f1fff6];
+  }
+
+  .glossary-panel dl {
+    @apply m-0 grid gap-3;
+  }
+
+  .glossary-panel dt {
+    @apply font-mono text-sm font-black text-[#32f584];
+  }
+
+  .glossary-panel dd {
+    @apply m-0 mt-0.5 text-sm font-bold leading-relaxed text-[#a6c6b3];
   }
 
   .home-shell {
@@ -187,7 +236,7 @@
   }
 
   .outcome p {
-    @apply text-sm font-bold leading-relaxed text-[#a6c6b3];
+    @apply text-base font-bold leading-relaxed text-[#a6c6b3];
   }
 
   .bit-column {

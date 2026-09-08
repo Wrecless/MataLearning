@@ -7,7 +7,16 @@ import {
   getReassembledPacketCount,
   NETWORK_ROUNDS,
 } from '../utils/networking.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Latency', definition: 'The total delay cost added up along a route. Lower is faster.' },
+  { term: 'Congested link', definition: 'A slower connection that costs more latency to cross than a clear one.' },
+  { term: 'Broken link', definition: 'A connection that cannot be used at all - pick a different route.' },
+  { term: 'Hop', definition: 'Moving from one device or router to another one it is directly connected to.' },
+];
 
 const LINK_STYLES = {
   clear: 'stroke-[#32f584]/65',
@@ -62,6 +71,12 @@ export default function PacketRoutingRaceGame() {
     }, 1500);
 
     return () => window.clearTimeout(timer);
+  }, [complete, roundIndex]);
+
+  useEffect(() => {
+    if (complete && roundIndex >= NETWORK_ROUNDS.length - 1) {
+      markGameComplete('packet-routing');
+    }
   }, [complete, roundIndex]);
 
   function startPacket(nextPacketIndex = packetIndex, nextMessage = null) {
@@ -220,7 +235,12 @@ export default function PacketRoutingRaceGame() {
           </div>
 
           <div className="relative min-h-[390px] overflow-hidden rounded-lg border border-[#93ffc2]/20 bg-black/30 p-3 md:min-h-[500px]">
-            <svg className="absolute inset-0 size-full" viewBox="0 0 100 100" aria-hidden="true">
+            <svg
+              className="absolute inset-0 size-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
               {round.links.map((link) => {
                 const from = round.nodes.find((node) => node.id === link.from);
                 const to = round.nodes.find((node) => node.id === link.to);
@@ -312,6 +332,10 @@ export default function PacketRoutingRaceGame() {
             <li>avoid broken and high-cost links</li>
             <li className={complete ? 'done active' : ''}>deliver and reassemble packets</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

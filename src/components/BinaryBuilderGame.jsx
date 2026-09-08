@@ -1,7 +1,15 @@
 import { Binary, Check, Lightbulb, RotateCcw } from 'lucide-react';
 import { useState } from 'react';
 import { bitValues, bitsToDecimal, CHALLENGES_PER_LEVEL, makeBinaryTarget } from '../utils/binary.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Bit', definition: 'A single 0 or 1 - one place-value column that is either switched on or off.' },
+  { term: 'Place value', definition: 'The decimal amount a bit is worth when it is switched on, such as 8, 4, 2, or 1.' },
+  { term: 'Binary', definition: 'Counting using only 0s and 1s instead of the usual 10 digits.' },
+];
 
 export default function BinaryBuilderGame() {
   const [level, setLevel] = useState(1);
@@ -33,6 +41,10 @@ export default function BinaryBuilderGame() {
     const nextLinesLeft = linesLeft - 1;
     const levelComplete = nextLinesLeft <= 0;
     const nextLevel = levelComplete ? level + 1 : level;
+
+    if (levelComplete) {
+      markGameComplete('binary');
+    }
 
     setScore((current) => current + level * 10);
     setLevel(nextLevel);
@@ -149,6 +161,10 @@ export default function BinaryBuilderGame() {
             <li>switch columns to 1 or 0</li>
             <li className={correct ? 'done active' : ''}>check if total equals target</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

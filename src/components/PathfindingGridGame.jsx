@@ -1,7 +1,16 @@
 import { Check, Lightbulb, RefreshCw, Route } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getNeighbours, PATHFINDING_GRID } from '../utils/algorithms.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'BFS', definition: 'Breadth-first search: explore the nearest cells first before moving further out.' },
+  { term: 'Queue', definition: 'A wait list of cells to expand next, first in, first out.' },
+  { term: 'Frontier', definition: 'Cells added to the queue but not expanded yet - the edge of what has been explored.' },
+  { term: 'Visited', definition: 'Cells already expanded. BFS never needs to revisit them.' },
+];
 
 const { columns, goal, rows, start, walls } = PATHFINDING_GRID;
 
@@ -13,6 +22,12 @@ export default function PathfindingGridGame() {
   const [tone, setTone] = useState('neutral');
   const [complete, setComplete] = useState(false);
   const expectedCell = complete ? -1 : queue[0];
+
+  useEffect(() => {
+    if (complete) {
+      markGameComplete('pathfinding');
+    }
+  }, [complete]);
 
   function reset() {
     setQueue([start]);
@@ -136,6 +151,10 @@ export default function PathfindingGridGame() {
             <li>add valid neighbours to the back</li>
             <li className={complete ? 'done active' : ''}>stop when the goal is reached</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

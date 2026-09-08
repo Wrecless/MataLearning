@@ -1,7 +1,15 @@
 import { Check, Lightbulb, RefreshCw } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getInsertionIndex, INSERTION_CHALLENGES } from '../utils/algorithms.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Sorted hand', definition: 'The growing part of the list that is always kept in order.' },
+  { term: 'Insert', definition: 'Placing a new value into its correct spot within the sorted hand.' },
+  { term: 'Shift', definition: 'Moving existing values over to make room for the value being inserted.' },
+];
 
 export default function InsertionSortGame() {
   const [challengeIndex, setChallengeIndex] = useState(0);
@@ -13,6 +21,12 @@ export default function InsertionSortGame() {
   const complete = cursor >= source.length;
   const currentValue = complete ? null : source[cursor];
   const expectedIndex = complete ? -1 : getInsertionIndex(sorted, currentValue);
+
+  useEffect(() => {
+    if (complete) {
+      markGameComplete('insertion');
+    }
+  }, [complete]);
 
   function reset(nextChallengeIndex = challengeIndex) {
     const nextSource = INSERTION_CHALLENGES[nextChallengeIndex];
@@ -145,6 +159,10 @@ export default function InsertionSortGame() {
             <li>shift larger values to the right</li>
             <li className={complete ? 'done active' : ''}>insert into the open position</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

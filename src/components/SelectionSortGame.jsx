@@ -1,7 +1,15 @@
 import { ArrowLeftRight, Check, Lightbulb, RefreshCw } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getSelectionMinimumIndex, SORTING_CHALLENGES } from '../utils/algorithms.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Unsorted section', definition: 'The part of the list that has not been placed in final order yet.' },
+  { term: 'Sorted section', definition: 'The part of the list already locked into its final position.' },
+  { term: 'Selection', definition: 'Picking the smallest remaining value to move into the sorted section next.' },
+];
 
 export default function SelectionSortGame() {
   const [challengeIndex, setChallengeIndex] = useState(0);
@@ -11,6 +19,12 @@ export default function SelectionSortGame() {
   const [tone, setTone] = useState('neutral');
   const complete = sortedBoundary >= numbers.length - 1;
   const expectedIndex = complete ? -1 : getSelectionMinimumIndex(numbers, sortedBoundary);
+
+  useEffect(() => {
+    if (complete) {
+      markGameComplete('selection');
+    }
+  }, [complete]);
 
   function reset(nextChallengeIndex = challengeIndex) {
     setChallengeIndex(nextChallengeIndex);
@@ -133,6 +147,10 @@ export default function SelectionSortGame() {
             <li>swap it into the next sorted position</li>
             <li className={complete ? 'done active' : ''}>repeat until sorted</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

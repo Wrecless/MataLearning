@@ -7,6 +7,8 @@ export const games = [
     description: 'Manual adjacent swaps',
     status: 'Ready',
     icon: Binary,
+    difficulty: 'Beginner',
+    estimatedMinutes: 5,
   },
   {
     id: 'binary',
@@ -14,6 +16,8 @@ export const games = [
     description: 'Place values and conversion',
     status: 'Ready',
     icon: Code2,
+    difficulty: 'Beginner',
+    estimatedMinutes: 5,
   },
   {
     id: 'logic',
@@ -21,6 +25,8 @@ export const games = [
     description: 'Truth tables and circuits',
     status: 'Soon',
     icon: Braces,
+    difficulty: 'Beginner',
+    estimatedMinutes: 5,
   },
   {
     id: 'search',
@@ -28,6 +34,8 @@ export const games = [
     description: 'Linear and binary search',
     status: 'Ready',
     icon: Search,
+    difficulty: 'Beginner',
+    estimatedMinutes: 5,
   },
   {
     id: 'selection',
@@ -35,6 +43,8 @@ export const games = [
     description: 'Find the smallest value',
     status: 'Ready',
     icon: ListOrdered,
+    difficulty: 'Beginner',
+    estimatedMinutes: 5,
   },
   {
     id: 'insertion',
@@ -42,6 +52,8 @@ export const games = [
     description: 'Insert into sorted order',
     status: 'Ready',
     icon: Shuffle,
+    difficulty: 'Intermediate',
+    estimatedMinutes: 6,
   },
   {
     id: 'pathfinding',
@@ -49,6 +61,8 @@ export const games = [
     description: 'Breadth-first search',
     status: 'Ready',
     icon: Route,
+    difficulty: 'Intermediate',
+    estimatedMinutes: 8,
   },
   {
     id: 'modulo',
@@ -56,6 +70,8 @@ export const games = [
     description: 'Remainders and cycles',
     status: 'Ready',
     icon: Percent,
+    difficulty: 'Beginner',
+    estimatedMinutes: 4,
   },
   {
     id: 'dividend',
@@ -63,6 +79,8 @@ export const games = [
     description: 'Division terms and quotients',
     status: 'Ready',
     icon: Divide,
+    difficulty: 'Beginner',
+    estimatedMinutes: 4,
   },
   {
     id: 'packet-routing',
@@ -70,6 +88,8 @@ export const games = [
     description: 'Routers, links, and packets',
     status: 'Ready',
     icon: Route,
+    difficulty: 'Intermediate',
+    estimatedMinutes: 10,
   },
 ];
 

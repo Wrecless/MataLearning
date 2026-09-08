@@ -1,7 +1,15 @@
 import { Check, Lightbulb, Percent, RefreshCw, RotateCcw } from 'lucide-react';
 import { useState } from 'react';
 import { makeModuloChallenge, MODULO_CHALLENGES_PER_LEVEL } from '../utils/modulo.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Modulo', definition: 'The % operation - it gives what is left over after dividing one number by another.' },
+  { term: 'Remainder', definition: 'The amount left after removing as many full groups of the divisor as possible.' },
+  { term: 'Divisor', definition: 'The group size you are dividing by.' },
+];
 
 export default function ModuloMasteryGame() {
   const [level, setLevel] = useState(1);
@@ -19,6 +27,10 @@ export default function ModuloMasteryGame() {
     const nextChallengesLeft = challengesLeft - 1;
     const levelComplete = nextChallengesLeft <= 0;
     const nextLevel = levelComplete ? level + 1 : level;
+
+    if (levelComplete) {
+      markGameComplete('modulo');
+    }
 
     setLevel(nextLevel);
     setChallengesLeft(levelComplete ? MODULO_CHALLENGES_PER_LEVEL : nextChallengesLeft);
@@ -206,6 +218,10 @@ export default function ModuloMasteryGame() {
             <li>subtract the multiple from the dividend</li>
             <li className={correct ? 'done active' : ''}>the result is the remainder</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

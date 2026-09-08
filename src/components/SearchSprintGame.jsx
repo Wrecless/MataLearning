@@ -1,7 +1,15 @@
 import { Check, Lightbulb, RefreshCw, Search } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getSearchStep, SEARCH_CHALLENGES } from '../utils/algorithms.js';
+import GlossaryPanel from './GlossaryPanel.jsx';
 import PageHeading from './PageHeading.jsx';
+import { markGameComplete } from '../utils/progress.js';
+
+const GLOSSARY_TERMS = [
+  { term: 'Linear search', definition: 'Check every value in order, starting from the left, until you find the target.' },
+  { term: 'Binary search', definition: 'Repeatedly check the middle of a sorted range and discard the half that cannot hold the target.' },
+  { term: 'Active range', definition: 'The section of the list that could still contain the target.' },
+];
 
 export default function SearchSprintGame() {
   const [challengeIndex, setChallengeIndex] = useState(0);
@@ -14,6 +22,12 @@ export default function SearchSprintGame() {
   const [complete, setComplete] = useState(false);
   const challenge = SEARCH_CHALLENGES[challengeIndex];
   const expectedIndex = complete ? -1 : getSearchStep({ high, list: challenge.list, low, mode });
+
+  useEffect(() => {
+    if (complete) {
+      markGameComplete('search');
+    }
+  }, [complete]);
 
   function reset(newMode = mode, nextChallengeIndex = challengeIndex) {
     const nextChallenge = SEARCH_CHALLENGES[nextChallengeIndex];
@@ -170,6 +184,10 @@ export default function SearchSprintGame() {
             <li>discard values that cannot contain the target</li>
             <li className={complete ? 'done active' : ''}>stop when the target is found</li>
           </ol>
+
+          <div className="mt-5">
+            <GlossaryPanel terms={GLOSSARY_TERMS} />
+          </div>
         </aside>
       </div>
     </section>

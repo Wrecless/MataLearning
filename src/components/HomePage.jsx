@@ -1,7 +1,11 @@
 import { ArrowRight, Binary, BookOpen, Play, Sparkles, Trophy, Users } from 'lucide-react';
+import { useCompletedGames } from '../utils/progress.js';
 
 export default function HomePage({ onLaunch, readyGameCount }) {
   const readyGameLabel = `${readyGameCount} ${readyGameCount === 1 ? 'game' : 'games'} ready`;
+  const completedGames = useCompletedGames();
+  const completedCount = completedGames.size;
+  const allComplete = completedCount > 0 && completedCount >= readyGameCount;
 
   return (
     <section className="home-shell" aria-labelledby="home-title">
@@ -46,6 +50,28 @@ export default function HomePage({ onLaunch, readyGameCount }) {
             <span>Classroom friendly and free to access</span>
           </div>
         </div>
+
+        {completedCount > 0 && (
+          <div className="mt-6 max-w-[520px]">
+            <div className="flex items-center justify-between text-sm font-black uppercase text-[#a6c6b3]">
+              <span>Your progress</span>
+              <span className="text-[#32f584]">
+                {completedCount}/{readyGameCount} completed
+              </span>
+            </div>
+            <div className="mt-2 h-3.5 overflow-hidden rounded-full bg-[#effff6]/10">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-[#32f584] to-[#f5c15b] transition-[width]"
+                style={{ width: `${Math.round((completedCount / readyGameCount) * 100)}%` }}
+              />
+            </div>
+            {allComplete && (
+              <p className="mt-3 text-base font-extrabold text-[#a8ffd0]">
+                Every ready game complete. Nice work, keep sharpening your skills on a replay.
+              </p>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="home-side-rail">

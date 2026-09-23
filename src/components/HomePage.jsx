@@ -1,4 +1,5 @@
-import { ArrowRight, Binary, BookOpen, Play, Sparkles, Trophy, Users } from 'lucide-react';
+import { ArrowRight, Binary, Play, Sparkles } from 'lucide-react';
+import HeroBubbleSortDemo from './HeroBubbleSortDemo.jsx';
 import { useCompletedGames } from '../utils/progress.js';
 
 export default function HomePage({ onLaunch, readyGameCount }) {
@@ -21,7 +22,7 @@ export default function HomePage({ onLaunch, readyGameCount }) {
 
         <h1
           id="home-title"
-          className="mt-7 max-w-[890px] text-5xl font-black leading-none text-[#f1fff6] drop-shadow-[0_0_34px_rgba(50,245,132,0.18)] md:text-7xl xl:text-8xl"
+          className="font-display mt-7 max-w-[890px] text-5xl font-extrabold leading-none text-[#f1fff6] drop-shadow-[0_0_34px_rgba(50,245,132,0.18)] md:text-7xl xl:text-8xl"
         >
           Welcome to Mr. Mata Learning Hub
         </h1>
@@ -75,38 +76,31 @@ export default function HomePage({ onLaunch, readyGameCount }) {
       </div>
 
       <div className="home-side-rail">
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-          <HubCard icon={Trophy} label={readyGameLabel} title="Across the hub" variant="warm" />
-          <HubCard icon={BookOpen} label="Topic focus" title="Sorting algorithms" />
-          <HubCard icon={Users} label="Built for" title="Secondary CS" />
+        <div className="flex flex-wrap items-center gap-2 font-mono text-xs font-black uppercase tracking-wide">
+          <MetaPill accent>{readyGameLabel}</MetaPill>
+          <MetaPill>Sorting &amp; searching</MetaPill>
+          <MetaPill>Built for secondary CS</MetaPill>
         </div>
 
-        <div className="code-preview">
-          <pre>{`for each pass:
-  compare neighbours
-  if left > right:
-    swap()
-  keep going...`}</pre>
+        <div>
+          <span className="ui-label">Live preview: bubble sort</span>
+          <HeroBubbleSortDemo />
         </div>
       </div>
     </section>
   );
 }
 
-function HubCard({ icon: Icon, label, title, variant }) {
+function MetaPill({ accent, children }) {
   return (
-    <article
-      className={`min-h-32 rounded-lg border p-4 ${
-        variant === 'warm'
-          ? 'border-[#f5c15b]/40 bg-[#f5c15b]/10'
-          : 'border-[#93ffc2]/20 bg-[#effff6]/5'
+    <span
+      className={`rounded-full border px-3 py-1.5 ${
+        accent
+          ? 'border-[#32f584]/40 bg-[#32f584]/10 text-[#32f584]'
+          : 'border-[#93ffc2]/20 bg-[#effff6]/5 text-[#a6c6b3]'
       }`}
     >
-      <Icon className="text-[#32f584]" size={25} />
-      <span className="mt-4 block text-xs font-black uppercase text-[#a6c6b3]">{label}</span>
-      <strong className="mt-3 block text-lg font-black leading-tight text-[#f1fff6] break-words">
-        {title}
-      </strong>
-    </article>
+      {children}
+    </span>
   );
 }

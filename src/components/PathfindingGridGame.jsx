@@ -110,6 +110,7 @@ export default function PathfindingGridGame() {
               const isWall = walls.has(index);
               const isVisited = visited.has(index);
               const isFrontier = frontier.has(index);
+              const isNext = !complete && index === expectedCell;
 
               return (
                 <button
@@ -128,6 +129,12 @@ export default function PathfindingGridGame() {
                   key={index}
                   onClick={() => handleCell(index)}
                   type="button"
+                  aria-current={isNext ? 'step' : undefined}
+                  aria-label={`${
+                    isStart ? 'Start cell' : isGoal ? 'Goal cell' : isWall ? `Wall, cell ${index + 1}` : `Cell ${index + 1}`
+                  }${isWall ? '' : isVisited ? ', visited' : isFrontier ? ', in queue' : ''}${
+                    isNext ? ', next to expand' : ''
+                  }`}
                 >
                   {isStart ? 'S' : isGoal ? 'G' : isWall ? '#' : index + 1}
                 </button>

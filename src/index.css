@@ -2,7 +2,8 @@
 
 @theme {
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-display: "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 @layer base {
@@ -58,7 +59,7 @@
   .matrix-rain::after {
     position: absolute;
     inset: 0;
-    content: "0101 1010 0011 0110 1100 1001 0010 1110";
+    content: attr(data-rain);
     color: rgba(107, 255, 169, 0.12);
     font-family: var(--font-mono);
     font-size: 0.92rem;
@@ -180,7 +181,12 @@
   }
 
   .icon-button {
-    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-[#93ffc2]/20 bg-[#effff6]/5 px-3.5 text-sm font-black text-[#a8ffd0] transition hover:-translate-y-0.5 hover:border-[#93ffc2]/35;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#93ffc2]/20 bg-[#effff6]/5 px-3.5 text-sm font-black text-[#a8ffd0] transition hover:-translate-y-0.5 hover:border-[#93ffc2]/35;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
   }
 
   .decision-button {

@@ -162,6 +162,7 @@ export default function DividendBuilderGame() {
                   }`}
                   key={option}
                   onClick={() => setSelectedDividend(option)}
+                  aria-pressed={selectedDividend === option}
                 >
                   {option}
                 </button>
@@ -172,7 +173,7 @@ export default function DividendBuilderGame() {
           <div className="grid items-center gap-3.5 border-t border-[#93ffc2]/20 pt-5 md:grid-cols-[minmax(210px,1fr)_minmax(160px,0.75fr)_auto]">
             <DividendMetric label="Selected dividend" value={selectedDividend ?? '-'} />
             <DividendMetric label="Equation" value={`${challenge.divisor} x ${challenge.quotient} + ${challenge.remainder}`} />
-            <button type="button" className="decision-button bg-[#0a9f8e] shadow-[0_14px_30px_rgba(41,214,197,0.18)]" onClick={checkAnswer}>
+            <button type="button" className="decision-button bg-[#087f71] shadow-[0_14px_30px_rgba(41,214,197,0.18)]" onClick={checkAnswer}>
               <Check size={22} />
               <span>Check</span>
             </button>

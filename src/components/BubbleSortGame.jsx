@@ -193,7 +193,7 @@ export default function BubbleSortGame() {
           <div className="grid justify-center gap-3.5 sm:flex">
             <button
               type="button"
-              className="decision-button bg-[#f05f52] shadow-[0_14px_30px_rgba(240,95,82,0.24)]"
+              className="decision-button bg-[#6f5bd0] shadow-[0_14px_30px_rgba(111,91,208,0.28)]"
               onClick={() => handleDecision('swap')}
               disabled={complete || isAdvancing}
             >
@@ -202,7 +202,7 @@ export default function BubbleSortGame() {
             </button>
             <button
               type="button"
-              className="decision-button bg-[#0a9f8e] shadow-[0_14px_30px_rgba(41,214,197,0.18)]"
+              className="decision-button bg-[#087f71] shadow-[0_14px_30px_rgba(41,214,197,0.18)]"
               onClick={() => handleDecision('keep')}
               disabled={complete || isAdvancing}
             >

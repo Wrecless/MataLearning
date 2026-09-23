@@ -11,6 +11,7 @@ import PathfindingGridGame from './components/PathfindingGridGame.jsx';
 import SearchSprintGame from './components/SearchSprintGame.jsx';
 import SelectionSortGame from './components/SelectionSortGame.jsx';
 import { games } from './data/games.js';
+import { getRainContent } from './data/rainContent.js';
 
 export default function App() {
   const [activeView, setActiveView] = useState('home');
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <main className="relative grid min-h-screen gap-5 overflow-hidden p-3.5 lg:grid-cols-[292px_minmax(0,1fr)] lg:p-5">
-      <div className="matrix-rain" aria-hidden="true" />
+      <div className="matrix-rain" aria-hidden="true" data-rain={getRainContent(activeView)} />
       <GameSidebar activeView={activeView} setActiveView={setActiveView} />
       <div className="relative z-10 flex min-w-0 flex-col">
         {activeView === 'home' && (

@@ -120,7 +120,7 @@ function GameNavItem({ active, completed, game, onSelect }) {
       <span className="grid min-w-0 gap-1">
         <strong className="truncate text-sm font-black">{game.title}</strong>
         <small className="truncate text-xs font-bold text-[#6c8b78]">{game.description}</small>
-        <small className="truncate font-mono text-[0.68rem] font-black uppercase tracking-wide text-[#4f6b5a]">
+        <small className="truncate font-mono text-[0.68rem] font-black uppercase tracking-wide text-[#7fa08c]">
           {game.difficulty} · {game.estimatedMinutes} min
         </small>
       </span>

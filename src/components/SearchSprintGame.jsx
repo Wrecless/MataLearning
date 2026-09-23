@@ -128,6 +128,7 @@ export default function SearchSprintGame() {
                 key={searchMode}
                 onClick={() => reset(searchMode)}
                 type="button"
+                aria-pressed={mode === searchMode}
               >
                 <Search size={18} />
                 <span>{searchMode === 'linear' ? 'Linear Search' : 'Binary Search'}</span>
@@ -160,6 +161,9 @@ export default function SearchSprintGame() {
                   key={value}
                   onClick={() => handlePick(index)}
                   type="button"
+                  aria-label={`Position ${index + 1}, value ${value}${
+                    isChecked ? ', already checked' : isRange ? '' : ', outside active range'
+                  }`}
                 >
                   {value}
                   <small className="absolute bottom-3 text-xs font-black uppercase text-[#a6c6b3]">

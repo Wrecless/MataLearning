@@ -1,4 +1,13 @@
 .vercel
-dist
-node_modules
-qa
+.next/
+out/
+dist/
+node_modules/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+qa/
+test-results/
+playwright-report/
+.DS_Store

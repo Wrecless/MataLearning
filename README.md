@@ -35,22 +35,25 @@ Games are organised by topic in the sidebar.
 
 ## Tech Stack
 
-- React
-- Vite
-- Tailwind CSS
+- Next.js 16 App Router with React 19
+- Strict TypeScript
+- Tailwind CSS 4
 - Lucide React icons
-- Vercel static deployment
+- Vercel deployment
 
 ## Source Structure
 
 ```text
 src/
-  components/    React UI components and game screens
-  data/          Sidebar game/category metadata
-  utils/         Game logic helpers
-  App.jsx        App shell and routing state
-  index.css      Tailwind entry point and shared component classes
-  main.jsx       React entry point
+  app/                  Next.js layouts, pages, loading/error/404 UI
+    games/[slug]/       Individual statically generated game routes
+    globals.css         Tailwind entry point and shared theme
+  components/           Interactive game screens and navigation
+  data/                 Typed game/category metadata
+  types/                Shared game UI types
+  utils/                Typed game logic and SSR-safe browser progress
+tests/
+  e2e/                  Desktop and mobile browser tests
 ```
 
 ## Branding
@@ -62,14 +65,14 @@ src/
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
 The local dev server runs at:
 
 ```text
-http://127.0.0.1:5173
+http://127.0.0.1:3000
 ```
 
 ## Build
@@ -78,8 +81,44 @@ http://127.0.0.1:5173
 npm run build
 ```
 
-The production output is generated in `dist`.
+The production output is generated in `.next`. Run `npm start` after building to exercise the production server.
+
+## Verification
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+# In another terminal, start npm run dev (or npm start after building):
+npm run test:e2e
+```
+
+Browser tests use Microsoft Edge on Windows and Playwright Chromium on other systems (`npx playwright install chromium`). Set `PLAYWRIGHT_BASE_URL` to test a preview or another local port.
+
+## Individual game URLs
+
+All game links are real Next.js links. They work when opened directly, shared, refreshed, or visited using browser back/forward.
+
+| Game                      | Path                         |
+| ------------------------- | ---------------------------- |
+| Bubble Sort Lab           | `/games/bubble-sort`         |
+| Binary Builder            | `/games/binary-builder`      |
+| Search Sprint             | `/games/search-sprint`       |
+| Selection Sort Showdown   | `/games/selection-sort`      |
+| Insertion Sort Cards      | `/games/insertion-sort`      |
+| Pathfinding Grid          | `/games/pathfinding-grid`    |
+| Modulo Mastery            | `/games/modulo-mastery`      |
+| Dividend Builder          | `/games/dividend-builder`    |
+| Packet Routing Race       | `/games/packet-routing-race` |
+| Logic Gates (coming soon) | `/games/logic-gates`         |
+
+Completion progress stays in the same browser under the original `mata-hub:completed-games` key, using unchanged game IDs. No account, database, or environment variables are required. Progress does not move between different domains or browser profiles.
 
 ## Deployment
 
-The app is deployed on Vercel as a static Vite site.
+`vercel.json` explicitly selects Next.js, `npm ci`, `npm run build`, and `.next`, overriding the old Vite build/output settings. Do not add a catch-all SPA rewrite: Next.js handles game pages and returns real 404s for unknown URLs.
+
+Keep the existing GitHub repository connected to the existing Vercel project. The `main` branch is production; feature branches should produce previews. Review the migration preview before merging. If the Vercel dashboard has legacy Vite development settings, change the development command to `npm run dev` and framework preset to Next.js there too.
+
+Existing production site (until the migration is merged and deployed): https://mr-mata-learning-hub.vercel.app

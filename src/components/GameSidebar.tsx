@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { gameCategories } from "../data/games";
+import { version } from "../../package.json";
 import { useCompletedGames } from "../utils/progress";
 
 export default function GameSidebar() {
@@ -53,6 +54,12 @@ export default function GameSidebar() {
           </strong>
           <span className="block text-sm font-bold text-[#a6c6b3]">
             Learning Hub
+          </span>
+          <span
+            className="mt-1 block font-mono text-xs text-muted"
+            aria-label={`Website version ${version}`}
+          >
+            V{version.replace(/\.0$/, "")}
           </span>
         </div>
         <button

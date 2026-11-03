@@ -14,6 +14,10 @@ function GameLoading() {
 // Random challenges start in the browser, avoiding mismatched server/client puzzles.
 // Each import becomes a separate chunk; visiting one game does not load every game.
 const screens = {
+  logic: dynamic(() => import("./LogicGatesGame"), {
+    ssr: false,
+    loading: GameLoading,
+  }),
   bubble: dynamic(() => import("./BubbleSortGame"), {
     ssr: false,
     loading: GameLoading,
@@ -59,7 +63,7 @@ export default function GameScreen({
   gameId: GameId;
   title: string;
 }) {
-  if (gameId === "logic") return null;
+  // Ready games resolve to their own lazy-loaded screen.
   const Screen = screens[gameId];
   return (
     <div aria-label={title}>

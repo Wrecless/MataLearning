@@ -1,6 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { games } from "../../src/data/games";
 
+const readyGameCount = games.filter((game) => game.status === "Ready").length;
+const seededProgressLabel = `${games.filter((game) => game.status === "Ready" && ["binary", "bubble", "logic"].includes(game.id)).length}/${readyGameCount} completed`;
+
 for (const game of games) {
   test(`${game.title} has a directly loadable, refresh-safe URL`, async ({
     page,
@@ -94,14 +97,14 @@ test("saved progress survives navigation and refresh and ignores unknown IDs", a
     ),
   );
   await page.goto("/");
-  await expect(page.getByText("2/9 completed")).toBeVisible();
+  await expect(page.getByText(seededProgressLabel)).toBeVisible();
   await page.getByRole("link", { name: "Launch Binary Builder" }).click();
   await expect(
     page.getByRole("heading", { name: "Binary Builder", exact: true }),
   ).toBeVisible();
   await page.reload();
   await page.goto("/");
-  await expect(page.getByText("2/9 completed")).toBeVisible();
+  await expect(page.getByText(seededProgressLabel)).toBeVisible();
 });
 
 test("malformed progress does not break the hub", async ({ page }) => {

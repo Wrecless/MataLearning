@@ -43,7 +43,7 @@ export default function GameSidebar() {
   }
 
   return (
-    <aside className="panel relative z-10 flex min-h-0 flex-col p-4 lg:min-h-[calc(100vh-40px)]">
+    <aside className="panel relative z-10 flex min-h-0 flex-col p-4 lg:sticky lg:top-5 lg:self-start lg:max-h-[calc(100dvh-40px)] lg:overflow-y-auto lg:min-h-[calc(100dvh-40px)]">
       <div className="flex items-center gap-3 border-b border-[#93ffc2]/20 pb-4">
         <div className="grid size-12 shrink-0 place-items-center rounded-lg border border-[#32f584]/60 bg-[#32f584]/10 text-[#32f584] shadow-[0_0_30px_rgba(50,245,132,0.16)]">
           <Terminal size={23} />

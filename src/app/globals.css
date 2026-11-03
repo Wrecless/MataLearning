@@ -168,7 +168,7 @@
   }
 
   .home-shell {
-    @apply relative grid min-h-[calc(100vh-40px)] gap-8 overflow-hidden rounded-[10px] border border-[#93ffc2]/20 bg-[#05100c]/85 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.42)] xl:grid-cols-[minmax(0,1fr)_340px] xl:p-10 2xl:grid-cols-[minmax(0,1fr)_430px] 2xl:p-14;
+    @apply relative grid grid-cols-1 min-h-[calc(100vh-40px)] gap-8 overflow-hidden rounded-[10px] border border-[#93ffc2]/20 bg-[#05100c]/85 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.42)] xl:grid-cols-[minmax(0,1fr)_340px] xl:p-10 2xl:grid-cols-[minmax(0,1fr)_430px] 2xl:p-14;
     background:
       linear-gradient(
         140deg,
@@ -195,7 +195,7 @@
   }
 
   .home-side-rail {
-    @apply relative z-10 grid gap-10 xl:flex xl:flex-col xl:justify-between;
+    @apply relative z-10 grid min-w-0 gap-10 xl:flex xl:flex-col xl:justify-between;
   }
 
   .launch-button {

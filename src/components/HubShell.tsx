@@ -11,7 +11,7 @@ export default function HubShell({ children }: { children: ReactNode }) {
   const activeView =
     games.find((game) => pathname === `/games/${game.slug}`)?.id ?? "home";
   return (
-    <div className="relative grid min-h-screen content-start gap-5 overflow-hidden p-3.5 lg:grid-cols-[292px_minmax(0,1fr)] lg:p-5">
+    <div className="relative grid min-h-screen content-start gap-5 overflow-clip p-3.5 lg:grid-cols-[292px_minmax(0,1fr)] lg:p-5">
       <div
         className="matrix-rain"
         aria-hidden="true"

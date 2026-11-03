@@ -6,7 +6,7 @@ Live site: https://mr-mata-learning-hub.vercel.app
 
 ## Teaching Games
 
-Games are organised by topic in the sidebar.
+Games are organised by topic in the sidebar and in the searchable homepage library. Search by game name, concept or topic; combine a query with a topic filter, clear empty searches, and see completed games without losing replay access.
 
 ### Algorithms
 
@@ -31,7 +31,7 @@ Games are organised by topic in the sidebar.
 
 ### Logic
 
-- **Logic Gates**: coming soon.
+- **Logic Gates**: predict outputs for AND, OR, NOT, XOR, NAND, NOR and XNOR gates, then trace combined circuits. Includes truth-table references, hints, explanations and saved completion.
 
 ## Tech Stack
 
@@ -59,6 +59,7 @@ tests/
 ## Branding
 
 - Theme: dark terminal interface with green Matrix-inspired accents.
+- Website release: `V0.13`, derived from `package.json` (`0.13.0`) in the shared sidebar.
 - Tab title: `Mr. Mata Learning Hub`.
 - Tab icon: terminal prompt mark matching the site sidebar logo.
 
@@ -100,18 +101,18 @@ Browser tests use Microsoft Edge on Windows and Playwright Chromium on other sys
 
 All game links are real Next.js links. They work when opened directly, shared, refreshed, or visited using browser back/forward.
 
-| Game                      | Path                         |
-| ------------------------- | ---------------------------- |
-| Bubble Sort Lab           | `/games/bubble-sort`         |
-| Binary Builder            | `/games/binary-builder`      |
-| Search Sprint             | `/games/search-sprint`       |
-| Selection Sort Showdown   | `/games/selection-sort`      |
-| Insertion Sort Cards      | `/games/insertion-sort`      |
-| Pathfinding Grid          | `/games/pathfinding-grid`    |
-| Modulo Mastery            | `/games/modulo-mastery`      |
-| Dividend Builder          | `/games/dividend-builder`    |
-| Packet Routing Race       | `/games/packet-routing-race` |
-| Logic Gates (coming soon) | `/games/logic-gates`         |
+| Game                    | Path                         |
+| ----------------------- | ---------------------------- |
+| Bubble Sort Lab         | `/games/bubble-sort`         |
+| Binary Builder          | `/games/binary-builder`      |
+| Search Sprint           | `/games/search-sprint`       |
+| Selection Sort Showdown | `/games/selection-sort`      |
+| Insertion Sort Cards    | `/games/insertion-sort`      |
+| Pathfinding Grid        | `/games/pathfinding-grid`    |
+| Modulo Mastery          | `/games/modulo-mastery`      |
+| Dividend Builder        | `/games/dividend-builder`    |
+| Packet Routing Race     | `/games/packet-routing-race` |
+| Logic Gates             | `/games/logic-gates`         |
 
 Completion progress stays in the same browser under the original `mata-hub:completed-games` key, using unchanged game IDs. No account, database, or environment variables are required. Progress does not move between different domains or browser profiles.
 
@@ -121,4 +122,4 @@ Completion progress stays in the same browser under the original `mata-hub:compl
 
 Keep the existing GitHub repository connected to the existing Vercel project. The `main` branch is production; feature branches should produce previews. Review the migration preview before merging. If the Vercel dashboard has legacy Vite development settings, change the development command to `npm run dev` and framework preset to Next.js there too.
 
-Existing production site (until the migration is merged and deployed): https://mr-mata-learning-hub.vercel.app
+Production site: https://mr-mata-learning-hub.vercel.app. Feature-branch upgrades appear there only after the reviewed PR is merged and the production deployment completes.

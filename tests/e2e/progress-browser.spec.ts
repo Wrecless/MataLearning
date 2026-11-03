@@ -1,5 +1,8 @@
 import { expect, test } from "@playwright/test";
 import { CHALLENGES_PER_LEVEL } from "../../src/utils/binary";
+import { games } from "../../src/data/games";
+
+const readyGameCount = games.filter((game) => game.status === "Ready").length;
 
 const key = "mata-hub:completed-games";
 
@@ -18,9 +21,9 @@ test("progress follows cross-tab updates and clearing storage", async ({
       localStorage.setItem(storageKey, JSON.stringify(["binary"])),
     key,
   );
-  await expect(page.getByText("1/9 completed")).toBeVisible();
+  await expect(page.getByText(`1/${readyGameCount} completed`)).toBeVisible();
   await otherTab.evaluate(() => localStorage.clear());
-  await expect(page.getByText("1/9 completed")).toHaveCount(0);
+  await expect(page.getByText(`1/${readyGameCount} completed`)).toHaveCount(0);
 });
 
 test("readable storage with quota-denied writes still tracks completion in memory", async ({
@@ -55,6 +58,6 @@ test("readable storage with quota-denied writes still tracks completion in memor
     .getByRole("navigation")
     .getByRole("link", { name: "Home", exact: true })
     .click();
-  await expect(page.getByText("1/9 completed")).toBeVisible();
+  await expect(page.getByText(`1/${readyGameCount} completed`)).toBeVisible();
   expect(errors).toEqual([]);
 });

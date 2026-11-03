@@ -27,6 +27,14 @@ Preserve the left-aligned layout: a 292px topic sidebar next to the game on desk
 
 Keep short, action-led comparison/swap and feedback transitions. Respect reduced motion. Show an accessible loading state while each game bundle loads; provide recovery links for errors and missing routes. Never server-render random game setup and then hydrate a different random state.
 
+## V0.13 teaching surfaces
+
+- Mode: Operate. Keep the terminal palette and typography; spend visual emphasis on the active circuit and the student’s answer, not extra decoration.
+- Add a searchable, topic-filtered game library as a flat linked list below the homepage introduction. Show all playable games, clear empty-state recovery, and browser-saved completion. Avoid a grid of identical feature cards.
+- Logic Gates uses a circuit-first teaching layout: inputs, named gate/circuit and output prediction, followed by a reference truth table, explanation and glossary. Choices and next/reset controls remain keyboard accessible; progress advances explicitly after a correct answer.
+- Preserve readable 320px layouts: headings wrap inside the available column and launch controls fit within the panel. No horizontal clipping as a substitute for responsiveness.
+- Keep the topic sidebar visible while desktop users scroll the game library. Bound it to the viewport with its own overflow for expanded categories; preserve the collapsible top menu on mobile.
+
 ## Routing
 
 Use real Next.js links, active-page semantics and shareable `/games/<slug>` routes. Keep the sidebar mounted between games. Existing `mata-hub:completed-games` localStorage IDs remain unchanged; SSR renders a stable empty progress snapshot and hydrates saved browser progress afterward.

@@ -59,7 +59,7 @@ export const games: Game[] = [
     slug: "logic-gates",
     title: "Logic Gates",
     description: "Truth tables and circuits",
-    status: "Soon",
+    status: "Ready",
     icon: Braces,
     difficulty: "Beginner",
     estimatedMinutes: 5,

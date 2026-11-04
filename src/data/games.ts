@@ -14,6 +14,7 @@ export type GameId =
   | "bubble"
   | "binary"
   | "logic"
+  | "logic-ii"
   | "search"
   | "selection"
   | "insertion"
@@ -63,6 +64,16 @@ export const games: Game[] = [
     icon: Braces,
     difficulty: "Beginner",
     estimatedMinutes: 5,
+  },
+  {
+    id: "logic-ii",
+    slug: "logic-gates-ii",
+    title: "Logic Gates II",
+    description: "All gate symbols and mixed circuits",
+    status: "Ready",
+    icon: Braces,
+    difficulty: "Intermediate",
+    estimatedMinutes: 8,
   },
   {
     id: "search",
@@ -157,7 +168,7 @@ export const gameCategories = [
     id: "logic",
     title: "Logic",
     description: "Boolean reasoning",
-    games: games.filter((game) => ["logic"].includes(game.id)),
+    games: games.filter((game) => ["logic", "logic-ii"].includes(game.id)),
   },
   {
     id: "computational-mathematics",

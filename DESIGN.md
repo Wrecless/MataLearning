@@ -35,6 +35,12 @@ Keep short, action-led comparison/swap and feedback transitions. Respect reduced
 - Preserve readable 320px layouts: headings wrap inside the available column and launch controls fit within the panel. No horizontal clipping as a substitute for responsiveness.
 - Keep the topic sidebar visible while desktop users scroll the game library. Bound it to the viewport with its own overflow for expanded categories; preserve the collapsible top menu on mobile.
 
+## V0.14 gate imagery and follow-on lesson
+
+- Use traditional distinctive-shape circuit symbols, not generic labelled rectangles: D-shaped AND, curved OR, triangular NOT, inversion bubbles for NOT/NAND/NOR/XNOR, and the separate input curve on XOR/XNOR. Draw original scalable SVGs and keep the output wire clear of the inversion circle.
+- Preserve the original Logic Gates lesson and completion ID. Logic Gates II is a separate intermediate lesson with its own URL and completion ID: recognise all seven symbols, then trace mixed-gate circuits.
+- Recognition questions omit the printed gate name and use geometric accessible descriptions; the optional symbol guide names every gate and explains its rule. Keep diagrams readable at 320px with text equivalents and explicit next/check controls.
+
 ## Routing
 
 Use real Next.js links, active-page semantics and shareable `/games/<slug>` routes. Keep the sidebar mounted between games. Existing `mata-hub:completed-games` localStorage IDs remain unchanged; SSR renders a stable empty progress snapshot and hydrates saved browser progress afterward.

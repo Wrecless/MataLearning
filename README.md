@@ -31,7 +31,8 @@ Games are organised by topic in the sidebar and in the searchable homepage libra
 
 ### Logic
 
-- **Logic Gates**: predict outputs for AND, OR, NOT, XOR, NAND, NOR and XNOR gates, then trace combined circuits. Includes truth-table references, hints, explanations and saved completion.
+- **Logic Gates**: predict outputs for AND, OR, NOT, XOR, NAND, NOR and XNOR gates, then trace combined circuits. Uses traditional shaped gate symbols with truth-table references, hints, explanations and saved completion.
+- **Logic Gates II**: recognise all seven gate symbols, then trace mixed XOR/NOT, NAND/OR and XNOR/AND circuits. Includes an expandable all-gate symbol guide, keyboard controls and independent completion tracking.
 
 ## Tech Stack
 
@@ -59,7 +60,7 @@ tests/
 ## Branding
 
 - Theme: dark terminal interface with green Matrix-inspired accents.
-- Website release: `V0.13`, derived from `package.json` (`0.13.0`) in the shared sidebar.
+- Website release: `V0.14`, derived from `package.json` (`0.14.0`) in the shared sidebar.
 - Tab title: `Mr. Mata Learning Hub`.
 - Tab icon: terminal prompt mark matching the site sidebar logo.
 
@@ -113,6 +114,7 @@ All game links are real Next.js links. They work when opened directly, shared, r
 | Dividend Builder        | `/games/dividend-builder`    |
 | Packet Routing Race     | `/games/packet-routing-race` |
 | Logic Gates             | `/games/logic-gates`         |
+| Logic Gates II          | `/games/logic-gates-ii`      |
 
 Completion progress stays in the same browser under the original `mata-hub:completed-games` key, using unchanged game IDs. No account, database, or environment variables are required. Progress does not move between different domains or browser profiles.
 
@@ -120,6 +122,8 @@ Completion progress stays in the same browser under the original `mata-hub:compl
 
 `vercel.json` explicitly selects Next.js, `npm ci`, `npm run build`, and `.next`, overriding the old Vite build/output settings. Do not add a catch-all SPA rewrite: Next.js handles game pages and returns real 404s for unknown URLs.
 
-Keep the existing GitHub repository connected to the existing Vercel project. The `main` branch is production; feature branches should produce previews. Review the migration preview before merging. If the Vercel dashboard has legacy Vite development settings, change the development command to `npm run dev` and framework preset to Next.js there too.
+Keep the existing GitHub repository connected to the existing Vercel project. The `main` branch is production. Per the owner’s delivery preference, verified changes are committed and pushed directly to `main`; use a feature branch or pull request only when explicitly requested. Keep lint, typecheck, unit/browser tests, production build and visual checks before pushing.
 
-Production site: https://mr-mata-learning-hub.vercel.app. Feature-branch upgrades appear there only after the reviewed PR is merged and the production deployment completes.
+Production site: https://mr-mata-learning-hub.vercel.app. Updates appear after the `main` deployment completes.
+
+Gate glyphs are original scalable SVG drawings of traditional distinctive-shape symbols, including inversion bubbles and the extra XOR/XNOR input curve. Symbol conventions were checked against [Electronics Club’s gate reference](https://electronicsclub.info/gates.htm).

@@ -4,6 +4,7 @@ import { useEffect, useReducer, useRef, useState } from "react";
 import { markGameComplete } from "../utils/progress";
 import PageHeading from "./PageHeading";
 import GlossaryPanel from "./GlossaryPanel";
+import CircuitDiagram from "./CircuitDiagram";
 import {
   INITIAL_LOGIC_STATE,
   LOGIC_CHALLENGES,
@@ -295,64 +296,5 @@ function TruthTable({ circuit }: { circuit: Circuit }) {
         })}
       </tbody>
     </table>
-  );
-}
-
-function CircuitDiagram({ circuit }: { circuit: Circuit }) {
-  const stages =
-    typeof circuit.a === "number" ? [circuit] : [circuit.a, circuit];
-  return (
-    <figure
-      className="my-5 border-y border-accent/20 py-5"
-      aria-label="Gate circuit diagram"
-    >
-      <div className="space-y-4" aria-hidden="true">
-        {stages.map((stage, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-[minmax(0,1fr)_16px_minmax(0,1fr)_16px_minmax(0,1fr)] items-center font-mono text-sm"
-          >
-            <div className="space-y-2 text-accent">
-              <div>
-                {typeof stage.a === "number" ? `A = ${stage.a}` : "wire"}
-              </div>
-              {stage.gate !== "NOT" && (
-                <div>
-                  {typeof stage.b === "number"
-                    ? `${index > 0 ? "C" : "B"} = ${stage.b}`
-                    : "wire"}
-                </div>
-              )}
-            </div>
-            <div className="border-t border-accent/60" />
-            <div className="flex min-h-20 items-center justify-center rounded-lg border-2 border-accent/60 bg-canvas px-1 font-bold text-foreground">
-              {stage.gate}
-            </div>
-            <div className="border-t border-accent/60" />
-            <div className="pl-1 text-warning">
-              {index === stages.length - 1 ? "Y = ?" : "wire"}
-            </div>
-          </div>
-        ))}
-      </div>
-      <figcaption className="mt-4 space-y-1 text-sm leading-relaxed text-muted">
-        {stages.map((stage, index) => (
-          <p key={index}>
-            {stages.length > 1 ? `Stage ${index + 1}: ` : ""}
-            {stage.gate} takes{" "}
-            {typeof stage.a === "number"
-              ? `A = ${stage.a}`
-              : "the first gate’s output"}
-            {stage.gate !== "NOT"
-              ? ` and ${index > 0 ? "C" : "B"} = ${typeof stage.b === "number" ? stage.b : "the other gate’s output"}`
-              : ""}
-            .{" "}
-            {index === stages.length - 1
-              ? "Find output Y."
-              : "Its output feeds the next gate."}
-          </p>
-        ))}
-      </figcaption>
-    </figure>
   );
 }

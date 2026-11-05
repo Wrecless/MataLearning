@@ -55,11 +55,19 @@ test("topic and query combine and an empty search can be cleared", async ({
   await page.goto("/#game-library");
   const library = page.getByRole("region", { name: "Game library" });
   await library.getByLabel("Topic", { exact: true }).selectOption("networking");
-  await expect(library.getByRole("link")).toHaveCount(1);
+  await expect(library.getByRole("link")).toHaveCount(2);
   await expect(
     library.getByRole("link", { name: "Play Packet Routing Race" }),
   ).toBeVisible();
-  await library.getByRole("searchbox", { name: "Find a game" }).fill("binary");
+  await expect(
+    library.getByRole("link", { name: "Play IPv4 Address Lab" }),
+  ).toBeVisible();
+  await library.getByRole("searchbox", { name: "Find a game" }).fill("ipv4");
+  await expect(library.getByRole("link")).toHaveCount(1);
+  await expect(
+    library.getByRole("link", { name: "Play IPv4 Address Lab" }),
+  ).toBeVisible();
+  await library.getByRole("searchbox", { name: "Find a game" }).fill("bubble");
   await expect(library.getByRole("link")).toHaveCount(0);
   await expect(library.getByText("No games match your search.")).toBeVisible();
   await library.getByRole("button", { name: "Clear filters" }).click();

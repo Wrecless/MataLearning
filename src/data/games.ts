@@ -4,6 +4,7 @@ import {
   Code2,
   Divide,
   ListOrdered,
+  Network,
   Percent,
   Route,
   Search,
@@ -21,7 +22,8 @@ export type GameId =
   | "pathfinding"
   | "modulo"
   | "dividend"
-  | "packet-routing";
+  | "packet-routing"
+  | "ipv4";
 
 export interface Game {
   id: GameId;
@@ -136,6 +138,16 @@ export const games: Game[] = [
     estimatedMinutes: 4,
   },
   {
+    id: "ipv4",
+    slug: "ipv4-address-lab",
+    title: "IPv4 Address Lab",
+    description: "Addresses, binary octets and subnets",
+    status: "Ready",
+    icon: Network,
+    difficulty: "Beginner",
+    estimatedMinutes: 7,
+  },
+  {
     id: "packet-routing",
     slug: "packet-routing-race",
     title: "Packet Routing Race",
@@ -179,7 +191,7 @@ export const gameCategories = [
   {
     id: "networking",
     title: "Networking",
-    description: "Packets and routing",
-    games: games.filter((game) => ["packet-routing"].includes(game.id)),
+    description: "Addresses, packets and routing",
+    games: games.filter((game) => ["packet-routing", "ipv4"].includes(game.id)),
   },
 ];

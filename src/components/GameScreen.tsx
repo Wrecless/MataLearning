@@ -14,6 +14,10 @@ function GameLoading() {
 // Random challenges start in the browser, avoiding mismatched server/client puzzles.
 // Each import becomes a separate chunk; visiting one game does not load every game.
 const screens = {
+  ipv4: dynamic(() => import("./IPv4AddressLabGame"), {
+    ssr: false,
+    loading: GameLoading,
+  }),
   "logic-ii": dynamic(() => import("./LogicGatesIIGame"), {
     ssr: false,
     loading: GameLoading,

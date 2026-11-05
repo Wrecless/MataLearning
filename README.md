@@ -27,6 +27,7 @@ Games are organised by topic in the sidebar and in the searchable homepage libra
 
 ### Networking
 
+- **IPv4 Address Lab**: check valid IPv4 addresses, build binary octets with place-value switches, recognise private/public examples and compare devices on a /24 subnet. Ten challenges, teaching hints, a glossary and independent completion tracking.
 - **Packet Routing Race**: practise routing packets through three increasingly complex network stages while avoiding broken and congested links, then reassemble delivered packets at the server.
 
 ### Logic
@@ -60,7 +61,7 @@ tests/
 ## Branding
 
 - Theme: dark terminal interface with green Matrix-inspired accents.
-- Website release: `V0.14`, derived from `package.json` (`0.14.0`) in the shared sidebar.
+- Website release: `V0.15`, derived from `package.json` (`0.15.0`) in the shared sidebar.
 - Tab title: `Mr. Mata Learning Hub`.
 - Tab icon: terminal prompt mark matching the site sidebar logo.
 
@@ -112,6 +113,7 @@ All game links are real Next.js links. They work when opened directly, shared, r
 | Pathfinding Grid        | `/games/pathfinding-grid`    |
 | Modulo Mastery          | `/games/modulo-mastery`      |
 | Dividend Builder        | `/games/dividend-builder`    |
+| IPv4 Address Lab        | `/games/ipv4-address-lab`    |
 | Packet Routing Race     | `/games/packet-routing-race` |
 | Logic Gates             | `/games/logic-gates`         |
 | Logic Gates II          | `/games/logic-gates-ii`      |
@@ -125,5 +127,7 @@ Completion progress stays in the same browser under the original `mata-hub:compl
 Keep the existing GitHub repository connected to the existing Vercel project. The `main` branch is production. Per the owner’s delivery preference, verified changes are committed and pushed directly to `main`; use a feature branch or pull request only when explicitly requested. Keep lint, typecheck, unit/browser tests, production build and visual checks before pushing.
 
 Production site: https://mr-mata-learning-hub.vercel.app. Updates appear after the `main` deployment completes.
+
+IPv4 Address Lab uses canonical dotted-decimal notation and the private ranges defined by [RFC 1918](https://www.rfc-editor.org/rfc/rfc1918#section-3). Subnet challenges explicitly use a /24 mask; they do not imply that all networks share that boundary.
 
 Gate glyphs are original scalable SVG drawings of traditional distinctive-shape symbols, including inversion bubbles and the extra XOR/XNOR input curve. Symbol conventions were checked against [Electronics Club’s gate reference](https://electronicsclub.info/gates.htm).
